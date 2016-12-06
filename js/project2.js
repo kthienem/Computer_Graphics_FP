@@ -79,7 +79,7 @@ function init() {
 
   directionalLight = new THREE.DirectionalLight( 0xffffff, 1.15 );
 	// var directionalLight = new THREE.DirectionalLight( 0xff0000, 1.15 );
-	directionalLight.position.set( 500, 2000, 100 );
+	directionalLight.position.set( -100, 500, 100 );
 	scene.add( directionalLight );
   //*/
 
@@ -228,9 +228,12 @@ function generateTexture(data, width, height) {
     //Full brown color
     // /*
     if(params.normal) {
-      imageData[i] = (96 + shade*128) * (0.5 + data[j] * 0.007);
-      imageData[i+1] = (32 + shade*96) * (0.5 + data[j] * 0.007);
-      imageData[i+2] = (shade*96) * (0.5 + data[j] * 0.007);
+      // imageData[i] = (96 + shade*128) * (0.5 + data[j] * 0.007);
+      imageData[i] = (0.5 + data[j] * 0.007);
+      // imageData[i+1] = (32 + shade*96) * (0.5 + data[j] * 0.007);
+      imageData[i+1] = (0.5 + data[j] * 0.007);
+      // imageData[i+2] = (shade*96) * (0.5 + data[j] * 0.007);
+      imageData[i+2] = (0.5 + data[j] * 0.007);
     }
     // */
 
