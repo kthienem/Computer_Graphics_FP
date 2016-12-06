@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang ="en">
+  <head>
+    <title>Final Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-wdith, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+      body {
+        color: #61443e;
+        font-family:Monospace;
+        font-size:13px;
+        text-align:center;
+
+        background-color: #bfd1e5;
+        margin:0px;
+        overflow:hidden;
+      }
+
+      #info {
+        position: absolute;
+          top: 0px;
+          width:100%;
+          padding: 5px;
+      }
+
+      a {
+        color: #a06851;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"><br><br><br><br><br>Generating World...</div>
+    <!-- <div id="info">webgl terrain demo<br />(left click: forward, right click: backward)</div> -->
+    <div id="info"><a href="http://threejs.org" target="_blank">three.js</a> - terrain [fly controls]<br/><br/>
+		<b>WASD</b> move, <b>R|F</b> up|down, <b>Q|E</b> roll, <b>up|down</b> pitch, <b>left|right</b> yaw<br/><br/>
+    click and drag mouse to rotate camera
+		</div>
+
+    <script src="js/three.min.js"></script>
+
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/FlyControls.js"></script>
+    <script src="js/ImprovedNoise.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/project2.js"></script>
+  </body>
+</html>
