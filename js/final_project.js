@@ -20,7 +20,8 @@ var dataGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var textureGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var materialGrid = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-var worldWidth = 256, worldDepth = 256;
+// var worldWidth = 256, worldDepth = 256;
+var worldWidth = 192, worldDepth = 192;
 var worldHalfWidth = worldWidth/2, worldHalfDepth = worldDepth/2;
 
 var clock = new THREE.Clock();
@@ -28,6 +29,7 @@ var gui, params;//variables needed to create options menu
 var wireframe = false;//determines if the mesh should be shown as wireframe
 var directionalLight, angle = 0;//light for scene and the angle it is rotated
 var data, geometry;
+var fogColor = new THREE.Color(0xf2f4f4);
 
 init();
 animate();
@@ -41,7 +43,7 @@ function init() {
 
 	//create a new scene
 	scene = new THREE.Scene();
-	scene.fog = new THREE.FogExp2(0xbfcbd0, 0.0003);//add fog to scene
+	scene.fog = new THREE.FogExp2(fogColor.getHex(), 0.0005);//add fog to scene
 
 	//create new FlyControls and initialize some variables
 	controls = new THREE.FlyControls(camera);
@@ -611,7 +613,19 @@ function animate() {
 			angle = (angle+(Math.PI / 100))%(2*Math.PI);
 		}
 
+		//Rotate
 		pos.applyAxisAngle(new THREE.Vector3(0, 0, 1).normalize(), angle);
+
+		//Update fog color
+		var f = pos.y/3000;
+		var g = Math.round(f*255);
+		if(pos.y < 0)
+			g = 0;
+		fogColor.setRGB(g/255, g/255, g/255);//setRGB expects values between 0 and 1
+		scene.fog.color.set(fogColor.getHex());
+		renderer.setClearColor(fogColor.getHex());
+	} else {//if not using shading, i.e. not using the Brown texture, set the clear color to a blue background
+		renderer.setClearColor(0xbfd1e5);
 	}
 	directionalLight.position.set(pos.x+chunkSize*indexArray[4].x, pos.y, pos.z+chunkSize*indexArray[4].y);
 	directionalLight.target = worldGrid[4];
