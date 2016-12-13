@@ -597,9 +597,9 @@ function animate() {
 	}
 
 	// /*
-	var x = 0;//chunkSize*indexArray[4].x;//directionalLight.position.x;
-	var y = 3000;//directionalLight.position.y;
-	var z = 0;//chunkSize*indexArray[4].y;//directionalLight.position.z;
+	var x = 0;
+	var y = 3000;
+	var z = 0;
 	var pos = new THREE.Vector3(x, y, z);
 	if(params.Brown) {
 		if(directionalLight.position.y > 0)
@@ -614,7 +614,6 @@ function animate() {
 		pos.applyAxisAngle(new THREE.Vector3(0, 0, 1).normalize(), angle);
 	}
 	directionalLight.position.set(pos.x+chunkSize*indexArray[4].x, pos.y, pos.z+chunkSize*indexArray[4].y);
-	// directionalLight.position.set(pos.x, pos.y, pos.z);
 	directionalLight.target = worldGrid[4];
 	//*/
 
